@@ -48,7 +48,7 @@
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>generate-docbook</id>
+                        <id>generate-docs</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>process-asciidoc</goal>
@@ -56,9 +56,7 @@
                         <configuration>
                             <sourceDocumentName>index.adoc</sourceDocumentName>
                             <backend>html</backend>
-                            <doctype>book</doctype>
                             <attributes>
-                                <docinfo>true</docinfo>
                                 <snippets>${project.build.directory}/snippets</snippets>
                             </attributes>
                         </configuration>
