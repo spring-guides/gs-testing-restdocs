@@ -172,7 +172,6 @@ NOTE: You can create custom snippets, and also change the format of the snippets
 To use the generated snippets you would want to have some Asciidoctor content in the project, and then include the snippets at build time. To see this working, create a new file `src/main/asciidoc/index.adoc` and include the snippets as desired. For example
 
 `src/main/asciidoc/index.adoc`
-[subs="verbatim"]
 ....
 = Getting Started With Spring REST Docs
 
@@ -186,6 +185,8 @@ This is an example output for a service running at http://localhost:8080:
 
 As you can see the format is very simple, and in fact you always get the same message.
 ....
+
+The main feature of this is that it includes 2 of the snippets, using the Asciidoctor `include` directive (the colons and the trailing brackets tell the parser to do something special on hose lines). Notice that the path to the included snippets is expressed as a placeholder - an "attribute" in Asciidoctor - called `{snippets}`. The only other markup in this simple case is the "=" at the top, which is a level 1 section heading, and the "." before the captions ("request" and "response") on the snippets.
 
 Then in the build configuration you would need to process this source file into your chosen documentation format. For example using Maven to generate HTML (`target/generated-docs` is generated when you do `mvnw package`):
 
