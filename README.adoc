@@ -192,7 +192,7 @@ Then in the build configuration you would need to process this source file into 
 `pom.xml`
 [source,xml]
 ----
-include::complete/pom.xml[tag=asciidoc]
+include::complete/pom.xml[tag=asciidoc,indent=0]
 ----
 
 or if you are using Gradle (`build/asciidoc` is generated when you do `gradlew asciidoctor`):
