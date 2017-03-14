@@ -42,6 +42,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+        <!-- tag::asciidoc[] -->
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -64,6 +65,7 @@
                     </execution>
                 </executions>
             </plugin>
+        <!-- end::asciidoc[] -->
         </plugins>
     </build>
 
