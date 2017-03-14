@@ -1,0 +1,223 @@
+---
+tags: [test,maven,gradle]
+projects: [spring-framework,spring-boot,spring-restdocs]
+---
+:spring_version: current
+:toc:
+:icons: font
+:source-highlighter: prettify
+:project_id: gs-testing-restdocs
+This guide walks you through the process of generating documention for the HTTP endpoints in a Spring application.
+
+== What you'll build
+
+You'll build a simple Spring application with some HTTP endpoints exposing an API. You will test just the web layer using JUnit and Spring's `MockMvc`, and then you will use the same tests to generate documentation for the API using https://projects.spring.io/spring-restdocs[Spring REST Docs].
+
+
+== What you'll need
+
+:java_version: 1.8
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
+
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[]
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[]
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc[]
+
+
+
+[[initial]]
+== Create a simple application
+
+Create a new controller for your Spring application:
+
+`src/main/java/hello/HomeController.java`
+[source,java]
+----
+include::complete/src/main/java/hello/HomeController.java[]
+----
+
+== Make the application executable
+
+Create a "main" class that you can use to launch the application:
+
+
+`src/main/java/hello/Application.java`
+[source,java]
+----
+include::complete/src/main/java/hello/Application.java[]
+----
+
+`@SpringBootApplication` is a convenience annotation that adds all of the following:
+    
+- `@Configuration` tags the class as a source of bean definitions for the application context.
+- `@EnableAutoConfiguration` tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
+- Normally you would add `@EnableWebMvc` for a Spring MVC app, but Spring Boot adds it automatically when it sees **spring-webmvc** on the classpath. This flags the application as a web application and activates key behaviors such as setting up a `DispatcherServlet`.
+- `@ComponentScan` tells Spring to look for other components, configurations, and services in the the `hello` package, allowing it to find the `HelloController`.
+
+The `main()` method uses Spring Boot's `SpringApplication.run()` method to launch an application. Did you notice that there wasn't a single line of XML? No **web.xml** file either. This web application is 100% pure Java and you didn't have to deal with configuring any plumbing or infrastructure.
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_subhead.adoc[]
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
+
+
+Logging output is displayed. The service should be up and running within a few seconds.
+
+
+== Test the application
+
+Now that the application is running, you can test it. If it is running you can load the home page on http://localhost:8080. But to give yourself more confidence that the application is working when you make changes, you want to automate the testing. You also want to publish documentation for the HTTP endpoint and you can generate the dynamic parts of that as part of the tests using Spring REST Docs.
+
+The first thing you can do is write a simple sanity check test that will fail if the application context cannot start. First add Spring Test and Spring REST Docs as dependencies to your project, in the test scope. If you are using Maven:
+
+`pom.xml`
+[source,xml]
+----
+include::complete/pom.xml[tag=test]
+----
+
+or if you are using Gradle:
+
+`build.gradle`
+[source,groovy]
+----
+include::complete/build.gradle[tag=test]
+----
+
+NOTE: You have included the "mockmvc" flavour of REST Docs which uses Spring MockMvc to capture the HTTP content. If your own app is not using Spring MVC there is also a "restassured" flavour which works with full stack integration tests.
+
+Then create a test case with the `@RunWith` and `@SpringBootTest` annotations and an empty test method:
+
+`src/test/java/hello/ApplicationTest.java`
+[source,java]
+----
+include::complete/src/test/java/hello/ApplicationTest.java[]
+----
+
+You can run this test in your IDE or on the command line (`mvn test` or `gradle test`) and it should pass.
+
+It's nice to have a sanity check like that, but you should also write some tests that assert the behaviour of our application. A useful approach is to test only the MVC layer, where Spring handles the incoming HTTP request and hands it off to your controller. To do that you can use Spring's `MockMvc`, and ask for that to be injected for us by using the `@WebMvcTest` annotation on the test case:
+
+`src/test/java/hello/WebLayerTest.java`
+[source,java]
+----
+@RunWith(SpringRunner.class)
+@WebMvcTest(HomeController.class)
+public class WebLayerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void shouldReturnDefaultMessage() throws Exception {
+        this.mockMvc.perform(get("/"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Hello World")));
+    }
+}
+----
+
+== Generate Snippets for Documentation
+
+The test above makes (mock) HTTP requests and asserts the responses. The HTTP API that you have created has dynamic content (at least in principle), so it would be really nice to be able to spy on the tests and syphon off the HTTP requests for use in the documentation. Spring REST Docs allows you to do this by generating "snippets". You can get this working really easily, just by adding an annotation to your test and an extra "assertion". Here's the complete test:
+
+`src/test/java/hello/WebLayerTest.java`
+[source,java]
+----
+include::complete/src/test/java/hello/WebLayerTest.java[]
+----
+
+The new annotation is `@AutoConfigureRestDocs` (from Spring Boot), which takes as an argument a directory location for the generated snippets. And the new assertion is `MockMvcRestDocumentation.document`, which takes as an argument a string identifier for the snippets.
+
+NOTE: Gradle users might prefer to use `build` instead of `target` as an output directory, but really it doesn't matter. It's up to you to choose.
+
+Run this test and then look in `target/snippets`. You should find a directory called `home` (the identifier) containing http://asciidoctor.org/[Asciidoctor] snippets:
+
+[source,bash]
+----
+└── target
+    └── snippets
+        └── home
+            └── httpie-request.adoc
+            └── curl-request.adoc
+            └── http-request.adoc
+            └── http-response.adoc
+----
+
+The default snippets are in Asciidoctor format, for the HTTP request and response, plus command line examples for `curl` and `httpie` (two common and popular command line HTTP clients).
+
+You can create additional snippets by adding arguments to the `document()` assertion in the test. For example, you can document each of the fields in a JSON response using the `PayloadDocumentation.responseFields()` snippet:
+
+`src/test/java/hello/WebLayerTest.java`
+[source,java]
+----
+this.mockMvc.perform(get("/")) 
+    ...
+    .andDo(document("home", responseFields(
+        fieldWithPath("message").description("The welcome message for the user.")
+    ));
+----
+
+If you try this and execute the test you should find an additional snippet file called "response-fields.adoc", containing a table of field anames and descriptions. If you omit a field or get its name wrong the test will fail - this is the power of REST Docs.
+
+NOTE: You can create custom snippets, and also change the format of the snippets and customize things like the hostname. Check the documentation of http://docs.spring.io/spring-restdocs/docs/current/reference/html5/[Spring REST Docs] for more detail.
+
+== Using the Snippets
+
+To use the generated snippets you would want to have some Asciidoctor content in the project, and then include the snippets at build time. To see this working, create a new file `src/main/asciidoc/index.adoc` and include the snippets as desired. For example
+
+`src/main/asciidoc/index.adoc`
+[source,asciidoc]
+----
+include::complete/src/main/asciidoc/index.adoc[]
+----
+
+Then in the build configuration you would need to process this source file into your chosen documentation format. For example using Maven to generate HTML (`target/generated-docs` is generated when you do `mvnw package`):
+
+`pom.xml`
+[source,xml]
+----
+include::complete/pom.xml[tag=asciidoc]
+----
+
+or if you are using Gradle (`build/asciidoc` is generated when you do `gradlew asciidoctor`):
+
+`build.gradle`
+[source,groovy]
+----
+buildscript {
+    repositories {
+        ...
+        jcenter()
+    }
+    ...
+    dependencies {
+        ...
+        classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.3")
+    }
+}
+
+...
+apply plugin: 'org.asciidoctor.convert'
+
+asciidoctor {
+    sourceDir 'src/main/asciidoc'
+    attributes \
+      'snippets': file('target/snippets')
+}
+----
+
+NOTE: The Asciidoctor Gradle plugin is not in Maven Central, so you also have to add `jcenter()` to the buildscipt dependencies in Gradle.
+
+== Summary
+
+Congratulations! You've just developed a Spring application and documented it using Spring Restdocs.  
+
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+
