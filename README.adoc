@@ -225,9 +225,11 @@ asciidoctor {
 
 NOTE: The Asciidoctor Gradle plugin is not in Maven Central, so you also have to add `jcenter()` to the buildscipt dependencies in Gradle.
 
+NOTE: The default location for asciidoctor sources in Gradle is `src/doc/asciidoc`. We only need to set the `sourceDir` because we changed the location to match the default for Maven.
+
 == Summary
 
-Congratulations! You've just developed a Spring application and documented it using Spring Restdocs.  
+Congratulations! You've just developed a Spring application and documented it using Spring Restdocs. You could publish the HTML documentation you created to a static website, or package it up and serve it from the application itself. Your documentation will always be up to date, and tests will fail your build if it is not. 
 
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
