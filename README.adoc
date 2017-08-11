@@ -53,7 +53,7 @@ include::complete/src/main/java/hello/Application.java[]
 ----
 
 `@SpringBootApplication` is a convenience annotation that adds all of the following:
-    
+
 - `@Configuration` tags the class as a source of bean definitions for the application context.
 - `@EnableAutoConfiguration` tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
 - Normally you would add `@EnableWebMvc` for a Spring MVC app, but Spring Boot adds it automatically when it sees **spring-webmvc** on the classpath. This flags the application as a web application and activates key behaviors such as setting up a `DispatcherServlet`.
@@ -156,7 +156,7 @@ You can create additional snippets by adding arguments to the `document()` asser
 `src/test/java/hello/WebLayerTest.java`
 [source,java]
 ----
-this.mockMvc.perform(get("/")) 
+this.mockMvc.perform(get("/"))
     ...
     .andDo(document("home", responseFields(
         fieldWithPath("message").description("The welcome message for the user.")
@@ -229,8 +229,14 @@ NOTE: The default location for asciidoctor sources in Gradle is `src/doc/asciido
 
 == Summary
 
-Congratulations! You've just developed a Spring application and documented it using Spring Restdocs. You could publish the HTML documentation you created to a static website, or package it up and serve it from the application itself. Your documentation will always be up to date, and tests will fail your build if it is not. 
+Congratulations! You've just developed a Spring application and documented it using Spring Restdocs. You could publish the HTML documentation you created to a static website, or package it up and serve it from the application itself. Your documentation will always be up to date, and tests will fail your build if it is not.
 
+== See Also
+
+The following guides may also be helpful:
+
+* https://spring.io/guides/gs/rest-service/[Building a RESTful Web Service]
+* https://spring.io/guides/gs/consuming-rest/[Consuming a RESTful Web Service]
+* https://spring.io/guides/gs/spring-boot/[Building an Application with Spring Boot]
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
-
