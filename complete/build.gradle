@@ -22,7 +22,7 @@ asciidoctor {
       'snippets': file('target/snippets')
 }
 
-jar {
+bootJar {
     baseName = 'gs-testing-restdocs'
     version =  '0.1.0'
 }
