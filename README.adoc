@@ -1,7 +1,3 @@
----
-tags: [test,maven,gradle]
-projects: [spring-framework,spring-boot,spring-restdocs]
----
 :spring_version: current
 :toc:
 :icons: font
