@@ -4,9 +4,13 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
         classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.3")
     }
+}
+
+plugins {
+    id "io.spring.dependency-management" version "1.0.5.RELEASE"
 }
 
 apply plugin: 'java'
