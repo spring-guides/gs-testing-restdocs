@@ -132,7 +132,7 @@ The new annotation is `@AutoConfigureRestDocs` (from Spring Boot), which takes a
 
 NOTE: Gradle users might prefer to use `build` instead of `target` as an output directory, but really it doesn't matter. It's up to you to choose.
 
-Run this test and then look in `target/snippets`. You should find a directory called `home` (the identifier) containing http://asciidoctor.org/[Asciidoctor] snippets:
+Run this test and then look in `target/snippets`. You should find a directory called `home` (the identifier) containing https://asciidoctor.org/[Asciidoctor] snippets:
 
 [source,bash]
 ----
@@ -161,7 +161,7 @@ this.mockMvc.perform(get("/"))
 
 If you try this and execute the test you should find an additional snippet file called "response-fields.adoc", containing a table of field anames and descriptions. If you omit a field or get its name wrong the test will fail - this is the power of REST Docs.
 
-NOTE: You can create custom snippets, and also change the format of the snippets and customize things like the hostname. Check the documentation of http://docs.spring.io/spring-restdocs/docs/current/reference/html5/[Spring REST Docs] for more detail.
+NOTE: You can create custom snippets, and also change the format of the snippets and customize things like the hostname. Check the documentation of https://docs.spring.io/spring-restdocs/docs/current/reference/html5/[Spring REST Docs] for more detail.
 
 == Using the Snippets
 
