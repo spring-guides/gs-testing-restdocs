@@ -8,4 +8,4 @@ include::{snippets}/home/http-request.adoc[]
 .response
 include::{snippets}/home/http-response.adoc[]
 
-As you can see the format is very simple, and in fact you always get the same message.
+As you can see the format is very simple. In fact, you always get the same message.
