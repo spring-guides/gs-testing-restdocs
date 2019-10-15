@@ -1,4 +1,4 @@
-package hello;
+package com.example.testingrestdocs;
 
 import java.util.Collections;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public Map<String, Object> greeting() {
-		return Collections.singletonMap("message", "Hello World");
+		return Collections.singletonMap("message", "Hello, World");
 	}
 
 }
