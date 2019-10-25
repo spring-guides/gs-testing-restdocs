@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.9.RELEASE</version>
+		<version>2.2.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -23,17 +23,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- tag::test[] -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.restdocs</groupId>
 			<artifactId>spring-restdocs-mockmvc</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- end::test[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -43,28 +52,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-				<!-- tag::asciidoc[] -->
-				<plugin>
-					<groupId>org.asciidoctor</groupId>
-					<artifactId>asciidoctor-maven-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>generate-docs</id>
-							<phase>prepare-package</phase>
-							<goals>
-								<goal>process-asciidoc</goal>
-							</goals>
-							<configuration>
-								<sourceDocumentName>index.adoc</sourceDocumentName>
-								<backend>html</backend>
-								<attributes>
-									<snippets>${project.build.directory}/snippets</snippets>
-								</attributes>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- end::asciidoc[] -->
 		</plugins>
 	</build>
 
