@@ -32,7 +32,7 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 Create a new controller for your Spring application:
 
 `src/main/java/hello/HomeController.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/hello/HomeController.java[]
 ----
@@ -43,7 +43,7 @@ Create a "main" class that you can use to launch the application:
 
 
 `src/main/java/hello/Application.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/hello/Application.java[]
 ----
@@ -90,7 +90,7 @@ NOTE: You have included the "mockmvc" flavour of REST Docs which uses Spring Moc
 Then create a test case with the `@RunWith` and `@SpringBootTest` annotations and an empty test method:
 
 `src/test/java/hello/ApplicationTest.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/test/java/hello/ApplicationTest.java[]
 ----
@@ -100,7 +100,7 @@ You can run this test in your IDE or on the command line (`mvn test` or `gradle 
 It's nice to have a sanity check like that, but you should also write some tests that assert the behaviour of our application. A useful approach is to test only the MVC layer, where Spring handles the incoming HTTP request and hands it off to your controller. To do that you can use Spring's `MockMvc`, and ask for that to be injected for us by using the `@WebMvcTest` annotation on the test case:
 
 `src/test/java/hello/WebLayerTest.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 @RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)
@@ -123,7 +123,7 @@ public class WebLayerTest {
 The test above makes (mock) HTTP requests and asserts the responses. The HTTP API that you have created has dynamic content (at least in principle), so it would be really nice to be able to spy on the tests and syphon off the HTTP requests for use in the documentation. Spring REST Docs allows you to do this by generating "snippets". You can get this working really easily, just by adding an annotation to your test and an extra "assertion". Here's the complete test:
 
 `src/test/java/hello/WebLayerTest.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/test/java/hello/WebLayerTest.java[]
 ----
@@ -150,7 +150,7 @@ The default snippets are in Asciidoctor format, for the HTTP request and respons
 You can create additional snippets by adding arguments to the `document()` assertion in the test. For example, you can document each of the fields in a JSON response using the `PayloadDocumentation.responseFields()` snippet:
 
 `src/test/java/hello/WebLayerTest.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 this.mockMvc.perform(get("/"))
     ...
