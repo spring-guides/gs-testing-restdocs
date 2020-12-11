@@ -106,13 +106,17 @@ part of the tests by using Spring REST Docs.
 
 The first thing you can do is write a simple sanity check test that fails if the
 application context cannot start. To do so, add Spring Test and Spring REST Docs as
-dependencies to your project, in the test scope. The following listing shows what to add
-if you use Maven:
+dependencies to your project, in the test scope.
+
+=== Maven
+
+If you use Maven, the following listing shows what to add to the `<dependencies>` 
+section of `pom.xml`:
 
 ====
 [source,xml]
 ----
-include::complete/pom.xml[tag=test]
+include::complete/pom.xml[tag=restdocs-dependency]
 ----
 ====
 
@@ -125,12 +129,14 @@ include::complete/pom.xml[]
 ----
 ====
 
-The following example shows what to add if you use Gradle:
+=== Gradle
+
+If you use Gradle, add the following line to the `dependencies` section of your `build.gradle` file.
 
 ====
 [source,groovy]
 ----
-include::complete/build.gradle[tag=test]
+include::complete/build.gradle[tag=restdocs-dependency]
 ----
 ====
 
@@ -143,7 +149,7 @@ include::complete/build.gradle[]
 ----
 ====
 
-NOTE: You can ignore the comments in the build files. They are there to let us pick up
+NOTE: You can ignore the `tag` comments in the build files. They are there to let us pick up
 parts of the files for inclusion in this guide.
 
 NOTE: You have included the `mockmvc` flavor of REST Docs, which uses Spring MockMvc to
