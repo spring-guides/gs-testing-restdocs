@@ -102,10 +102,10 @@ all the necessary dependencies and start the Spring Boot app (by running the `ma
 method) for you.
 
 ==== Running using the Maven Wrapper
-Start the application by running `mvnw spring-boot:run` on the command line in the root of the project. 
+Start the application by running `./mvnw spring-boot:run` on the command line in the root of the project. 
 
 ==== Running using the Gradle Wrapper
-Start the application by running `gradlew bootRun` on the command line in the root of the project.
+Start the application by running `./gradlew bootRun` on the command line in the root of the project.
 
 
 Once you start the application, logging output will be displayed and the service should be up 
@@ -118,12 +118,11 @@ something like `Started TestingRestdocsApplication in 1.492 seconds`.
 Now that the application is running, you can test it. You can load the home page at
 `http://localhost:8080`. However, to give yourself more confidence that the application
 works when you make changes, you want to automate the testing. You also want to publish
-documentation for the HTTP endpoint. You can generate the dynamic parts of that testing as
+documentation for the HTTP endpoint. You can generate the dynamic parts of that documentation as
 part of the tests by using Spring REST Docs.
 
 The first thing you can do is write a simple sanity check test that fails if the
-application context cannot start. To do so, add Spring Test and Spring REST Docs as
-dependencies to your project, in the test scope.
+application context cannot start.
 
 === Maven
 
