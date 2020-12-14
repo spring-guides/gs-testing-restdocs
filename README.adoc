@@ -63,7 +63,7 @@ include::complete/src/main/java/com/example/testingrestdocs/HomeController.java[
 
 == Run the Application
 
-The Spring Initializr creates a `{YourProjectName}Application` class with a `main` function 
+The Spring Initializr creates a `{YourProjectName}Application` class with a `main` method 
 that you can use to launch the application. The following listing (from
 `src/main/java/com/example/testingrestdocs/TestingRestdocsApplication.java`) shows the
 application class that the Spring Initializr created:
