@@ -93,8 +93,8 @@ application. Did you notice that there is not a single line of XML? There is no 
 file, either. This web application is 100% pure Java and you did not have to deal with
 configuring any plumbing or infrastructure. Spring Boot handles all of that for you.
 
-Go ahead and run `main()`. Logging output will be displayed and the service should be up 
-and running within a few seconds.
+Run main(). Logging output is displayed and the service should be running within a few 
+seconds.
 
 == Test the Application
 
