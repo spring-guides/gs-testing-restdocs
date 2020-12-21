@@ -28,6 +28,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<!-- We'll be using JUnit 5. Vintage is for JUnit 4 so we exclude it. -->
 			<exclusions>
 				<exclusion>
 					<groupId>org.junit.vintage</groupId>
