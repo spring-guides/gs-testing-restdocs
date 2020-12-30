@@ -254,8 +254,27 @@ Content-Length: 26
 ----
 ====
 
-There are also command line examples for `curl` and `httpie` (two common and popular command
-line HTTP clients).
+:more-on-curl: https://idratherbewriting.com/learnapidoc/docapis_install_curl.html
+:more-on-httpie: https://httpie.io/
+
+There are also command line examples for {more-on-curl}[curl] and {more-on-httpie}[httpie]
+(two common and popular command line HTTP clients).
+
+====
+.Generated curl request
+[source,bash]
+----
+$ curl 'http://localhost:8080/' -i -X GET
+----
+====
+
+====
+.Generated httpie request
+[source,bash]
+----
+$ http GET 'http://localhost:8080/'
+----
+====
 
 You can create additional snippets by adding arguments to the `document()` assertion in
 the test. For example, you can document each of the fields in a JSON response by using the
