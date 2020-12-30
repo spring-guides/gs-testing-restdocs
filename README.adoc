@@ -230,8 +230,31 @@ Run the test and then look in `target/snippets`. You should find a directory cal
 ----
 ====
 
-The default snippets are in Asciidoctor format for the HTTP request and response. There
-are also command line examples for `curl` and `httpie` (two common and popular command
+The HTTP request and response are captured and a snippet is generated for each.
+
+
+====
+.Request
+[source,http,options="nowrap"]
+----
+GET / HTTP/1.1
+Host: localhost:8080
+----
+====
+
+====
+.Response
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 26
+
+{"message":"Hello, World"}
+----
+====
+
+There are also command line examples for `curl` and `httpie` (two common and popular command
 line HTTP clients).
 
 You can create additional snippets by adding arguments to the `document()` assertion in
