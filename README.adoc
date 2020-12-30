@@ -155,7 +155,6 @@ annotation on the test case. The following example (from
 ====
 [source,java]
 ----
-@RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)
 public class WebLayerTest {
 
