@@ -381,6 +381,11 @@ see note below.
 NOTE: The default location for Asciidoctor sources in Gradle is `src/doc/asciidoc`. We set
 the `sourceDir` to match the default for Maven.
 
+:docs-screenshot: https://user-images.githubusercontent.com/19827042/103386593-db63f400-4abc-11eb-95e8-3a76e2fb8348.png
+
+.The generated HTML docs
+image::{docs-screenshot}[The generated HTML docs]
+
 == Summary
 
 Congratulations! You have just developed a Spring application and documented it by using
