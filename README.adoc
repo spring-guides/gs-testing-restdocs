@@ -335,37 +335,47 @@ only other markup in this simple case is the `=` at the top (which is a level-1 
 heading) and the `.` before the captions ("`request`" and "`response`") on the  snippets.
 The `.` turns the text on that line into a caption.
 
-Then, in the build configuration, you need to process this source file into your chosen
-documentation format. For example, you can use Maven to generate HTML
-(`target/generated-docs` is generated when you do `./mvnw package`). The following listing
-shows the Asciidoc portion of the `pom.xml` file:
+Maven or Gradle will generate HTML documentation from your `index.adoc` file at build time.
+Spring Initializr provided the necessary config, you just need to make sure the file
+is where Maven or Gradle expects it.
 
-====
-[source,xml]
-----
-include::complete/pom.xml[tag=asciidoc,indent=0]
-----
-====
+Run `./mvnw package` and you'll find the documentation in the `target/generated-docs` folder.
 
-If you use Gradle, `build/asciidoc` is generated when you run `./gradlew asciidoctor`. The
-following listing shows the Asciidoctor-related parts of the `build.gradle` file:
+// FIXME: Gradle isn't generating the snippets for some reason, as nothing appears in the build/generated-snippets
+// FIXME: folder—the folder appears, but no snippets.  ¯\_(ツ)_/¯️
+
+If you use Gradle, run `./gradlew asciidoctor` and you'll find the documentation in the
+`build/asciidoc` folder. The following listing shows the Asciidoctor-related
+parts of the `build.gradle` file:
 
 ====
 [source,groovy]
 ----
 plugins {
 	...
-	id 'org.asciidoctor.convert' version '1.5.6'
+	id 'org.asciidoctor.convert' version '1.5.8'
 }
-
 ...
 
-asciidoctor {
-    sourceDir 'src/main/asciidoc'
-    attributes \
-      'snippets': file('target/snippets')
+ext {
+	set('snippetsDir', file("build/generated-snippets"))
 }
+...
+
+test {
+	outputs.dir snippetsDir
+	useJUnitPlatform()
+}
+
+asciidoctor {
+    sourceDir 'src/main/asciidoc' <1>
+	inputs.dir snippetsDir
+	dependsOn test
+}
+
 ----
+<1> If you want Maven and Gradle to look in the same place for the docs, you'll need to add this line yourself;
+see note below.
 ====
 
 NOTE: The default location for Asciidoctor sources in Gradle is `src/doc/asciidoc`. We set
@@ -374,9 +384,12 @@ the `sourceDir` to match the default for Maven.
 == Summary
 
 Congratulations! You have just developed a Spring application and documented it by using
-Spring Restdocs. You could publish the HTML documentation you created to a static website
+Spring REST Docs. You could publish the HTML documentation you created to a static website
 or package it up and serve it from the application itself. Your documentation will always
 be up to date, and tests will fail your build if it is not.
+
+// TODO: It would be nice to include a quick example of how to package and serve the docs with the
+// TODO: application itself.
 
 == See Also
 
