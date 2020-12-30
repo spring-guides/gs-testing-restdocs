@@ -150,10 +150,17 @@ You can run this test in your IDE or on the command line (by running `./mvnw tes
 
 It is nice to have a sanity check, but you should also write some tests that assert the
 behavior of our application. A useful approach is to test only the MVC layer, where Spring
-handles the incoming HTTP request and hands it off to your controller. To do that, you can
-use {mock-mvc}[Spring's `MockMvc`] and ask for it to be injected for you by using the
-{web-mvc-test}[`@WebMvcTest` annotation] on the test case. The following example (from
-`src/test/java/com/example/testingrestdocs/WebLayerTest.java`) shows how to do so:
+handles the incoming HTTP request and hands it off to your controller.
+
+:testing-web-layer-tutorial: https://spring.io/guides/gs/testing-web/
+
+TIP: For those new to it, the {testing-web-layer-tutorial}[Testing the Web Layer tutorial] goes into
+more depth on this kind of testing. In this tutorial we'll focus on REST Docs.
+
+To test just the web layer, you can use {mock-mvc}[Spring's `MockMvc`] and ask for it to
+be injected for you by using the {web-mvc-test}[`@WebMvcTest` annotation] on the test
+case. The following example (from `src/test/java/com/example/testingrestdocs/WebLayerTest.java`)
+shows how to do so:
 
 ====
 [source,java]
