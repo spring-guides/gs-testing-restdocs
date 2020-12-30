@@ -124,56 +124,15 @@ part of the tests by using Spring REST Docs.
 The first thing you can do is write a simple sanity check test that fails if the
 application context cannot start.
 
-=== Maven
+NOTE: All the dependencies you need to write JUnit 5 tests are included for you by the
+`pom.xml` that came with the project you got from Spring Initializr.
 
-If you use Maven, the following listing shows what to add to the `<dependencies>` 
-section of `pom.xml`:
-
-====
-[source,xml]
-----
-include::complete/pom.xml[tag=restdocs-dependency]
-----
-====
-
-The following listing shows the completed `pom.xml` file:
-
-====
-[source,xml]
-----
-include::complete/pom.xml[]
-----
-====
-
-=== Gradle
-
-If you use Gradle, add the following line to the `dependencies` section of your `build.gradle` file.
-
-====
-[source,groovy]
-----
-include::complete/build.gradle[tag=restdocs-dependency]
-----
-====
-
-The following listing shows the completed `build.gradle` file:
-
-====
-[source,groovy]
-----
-include::complete/build.gradle[]
-----
-====
-
-NOTE: You can ignore the `tag` comments in the build files. They are there to let us pick up
-parts of the files for inclusion in this guide.
-
-NOTE: You have included the `mockmvc` flavor of REST Docs, which uses Spring MockMvc to
+NOTE: By deafult, you get the `mockmvc` flavor of REST Docs, which uses Spring MockMvc to
 capture the HTTP content. If your own application does not use Spring MVC, you can also
 use a `restassured` flavor, which works with full stack integration tests.
 
-Now create a test case with the `@RunWith` and `@SpringBootTest` annotations and an empty
-test method, as the following example (from
+A test case checking if the context loads has already been created for you by Spring Initialzr.
+It has the `@SpringBootTest` annotation and an empty test method, as the following example (from
 `src/test/java/com/example/testingrestdocs/TestingRestdocsApplicationTests.java`) shows:
 
 ====
