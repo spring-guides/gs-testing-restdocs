@@ -145,11 +145,14 @@ include::complete/src/test/java/com/example/testingrestdocs/TestingRestdocsAppli
 You can run this test in your IDE or on the command line (by running `./mvnw test` or
 `./gradlew test`).
 
+:mock-mvc: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html
+:web-mvc-test: https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/web/servlet/WebMvcTest.html
+
 It is nice to have a sanity check, but you should also write some tests that assert the
 behavior of our application. A useful approach is to test only the MVC layer, where Spring
 handles the incoming HTTP request and hands it off to your controller. To do that, you can
-use Spring's `MockMvc` and ask for that to be injected for you by using the `@WebMvcTest`
-annotation on the test case. The following example (from
+use {mock-mvc}[Spring's `MockMvc`] and ask for it to be injected for you by using the
+{web-mvc-test}[`@WebMvcTest` annotation] on the test case. The following example (from
 `src/test/java/com/example/testingrestdocs/WebLayerTest.java`) shows how to do so:
 
 ====
