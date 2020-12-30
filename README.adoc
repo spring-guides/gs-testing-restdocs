@@ -201,17 +201,19 @@ include::complete/src/test/java/com/example/testingrestdocs/WebLayerTest.java[]
 ====
 
 :auto-configure-rest-docs-annotation: https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/restdocs/AutoConfigureRestDocs.html
+:document: https://docs.spring.io/spring-restdocs/docs/current/api/org/springframework/restdocs/mockmvc/MockMvcRestDocumentation.html
+:asciidoctor-link: http://asciidoctor.org/
 
 The new annotation is {auto-configure-rest-docs-annotation}[`@AutoConfigureRestDocs`]
 (from Spring Boot), which takes an argument for a directory location for the generated
-snippets. And the new assertion is `MockMvcRestDocumentation.document`, which takes an
+snippets. And the new assertion is {document}[`MockMvcRestDocumentation.document`], which takes an
 argument for a string identifier for the snippets.
 
 NOTE: Gradle users might prefer to use `build` instead of `target` as an output directory.
 However, it does not matter. Use whichever you prefer.
 
 Run the test and then look in `target/snippets`. You should find a directory called `home`
-(the identifier) that contains http://asciidoctor.org/[Asciidoctor] snippets, as follows:
+(the identifier provided to `document()`) that contains {asciidoctor-link}[Asciidoctor] snippets, as follows:
 
 ====
 [source,bash]
