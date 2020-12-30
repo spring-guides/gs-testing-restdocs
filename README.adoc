@@ -288,11 +288,11 @@ this.mockMvc.perform(get("/"))
     ...
     .andDo(document("home", responseFields(
         fieldWithPath("message").description("The welcome message for the user.")
-    ));
+    )));
 ----
 ====
 
-If you run the test, you should find an additional snippet file called
+If you run this test, you should find an additional snippet file called
 `response-fields.adoc`. It contains a table of field names and descriptions. If you omit a
 field or get its name wrong, the test fails. This is the power of REST Docs.
 
