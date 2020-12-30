@@ -184,11 +184,13 @@ public class WebLayerTest {
 == Generate Snippets for Documentation
 
 The test in the preceding section makes (mock) HTTP requests and asserts the responses.
-The HTTP API that you have created has dynamic content (at least in principle), so it
+Most HTTP APIs that you create, in principle, will have dynamic content so it
 would be really nice to be able to spy on the tests and siphon off the HTTP requests for
-use in the documentation. Spring REST Docs lets you do so by generating "`snippets`". You
-can get this working by adding an annotation to your test and an extra "`assertion`". The
-following example (from `src/test/java/com/example/testingrestdocs/WebLayerTest.java`)
+use in the documentation.
+
+Spring REST Docs does just that and lets you document it in things called "`snippets`".
+You can get this working by adding an annotation to your test along with an extra "`assertion`".
+The following example (from `src/test/java/com/example/testingrestdocs/WebLayerTest.java`)
 shows the complete test:
 
 ====
