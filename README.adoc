@@ -205,8 +205,8 @@ include::complete/src/test/java/com/example/testingrestdocs/WebLayerTest.java[]
 :asciidoctor-link: http://asciidoctor.org/
 
 The new annotation is {auto-configure-rest-docs-annotation}[`@AutoConfigureRestDocs`]
-(from Spring Boot), which takes an argument for a directory location for the generated
-snippets. And the new assertion is {document}[`MockMvcRestDocumentation.document`], which takes an
+(from Spring Boot), (which can take an argument for a directory location for the generated
+snippets). And the new assertion is {document}[`MockMvcRestDocumentation.document`], which takes an
 argument for a string identifier for the snippets.
 
 NOTE: Gradle users might prefer to use `build` instead of `target` as an output directory.
