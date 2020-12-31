@@ -351,31 +351,18 @@ parts of the `build.gradle` file:
 ====
 [source,groovy]
 ----
-plugins {
-	...
-	id 'org.asciidoctor.convert' version '1.5.8'
-}
 ...
 
-ext {
-	set('snippetsDir', file("build/generated-snippets"))
-}
+include::complete/build.gradle[tag=asciidoc-config1]
 ...
 
-test {
-	outputs.dir snippetsDir
-	useJUnitPlatform()
-}
-
-asciidoctor {
-    sourceDir 'src/main/asciidoc' <1>
-	inputs.dir snippetsDir
-	dependsOn test
-}
+include::complete/build.gradle[tag=asciidoc-config2]
 
 ----
 <1> If you want Maven and Gradle to look in the same place for the docs, you'll need to add this line yourself;
 see note below.
+<2> Informs gradle about how to resolve the `snippets` variable in `index.adoc`.
+// FIXME: if there's a conventional way to do this, instead of specifying some configuration, do that instead.
 ====
 
 NOTE: The default location for Asciidoctor sources in Gradle is `src/doc/asciidoc`. We set
