@@ -67,7 +67,7 @@ Create a new controller for your Spring application. The following listing (from
 `src/main/java/com/example/testingrestdocs/HomeController.java`) shows how to do so:
 
 ====
-[source,java]
+[source,java,indent=0,tab=2]
 ----
 include::complete/src/main/java/com/example/testingrestdocs/HomeController.java[]
 ----
@@ -81,7 +81,7 @@ The following listing (from
 application class that the Spring Initializr created:
 
 ====
-[source,java]
+[source,java,indent=0,tab=2]
 ----
 include::complete/src/main/java/com/example/testingrestdocs/TestingRestdocsApplication.java[]
 ----
@@ -121,7 +121,7 @@ dependencies to your project, in the test scope. The following listing shows wha
 if you use Maven:
 
 ====
-[source,xml]
+[source,xml,indent=0,tab=2]
 ----
 include::complete/pom.xml[tag=test]
 ----
@@ -130,7 +130,7 @@ include::complete/pom.xml[tag=test]
 The following listing shows the completed `pom.xml` file:
 
 ====
-[source,xml]
+[source,xml,indent=0,tab=2]
 ----
 include::complete/pom.xml[]
 ----
@@ -139,7 +139,7 @@ include::complete/pom.xml[]
 The following example shows what to add if you use Gradle:
 
 ====
-[source,groovy]
+[source,groovy,indent=0,tab=2]
 ----
 include::complete/build.gradle[tag=test]
 ----
@@ -148,7 +148,7 @@ include::complete/build.gradle[tag=test]
 The following listing shows the completed `build.gradle` file:
 
 ====
-[source,groovy]
+[source,groovy,indent=0,tab=2]
 ----
 include::complete/build.gradle[]
 ----
@@ -166,7 +166,7 @@ test method, as the following example (from
 `src/test/java/com/example/testingrestdocs/TestingRestdocsApplicationTests.java`) shows:
 
 ====
-[source,java]
+[source,java,indent=0,tab=2]
 ----
 include::complete/src/test/java/com/example/testingrestdocs/TestingRestdocsApplicationTests.java[]
 ----
@@ -183,7 +183,7 @@ annotation on the test case. The following example (from
 `src/test/java/com/example/testingrestdocs/WebLayerTest.java`) shows how to do so:
 
 ====
-[source,java]
+[source,java,indent=0,tab=2]
 ----
 @RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)
@@ -213,7 +213,7 @@ following example (from `src/test/java/com/example/testingrestdocs/WebLayerTest.
 shows the complete test:
 
 ====
-[source,java]
+[source,java,indent=0,tab=2]
 ----
 include::complete/src/test/java/com/example/testingrestdocs/WebLayerTest.java[]
 ----
@@ -255,7 +255,7 @@ the test. For example, you can document each of the fields in a JSON response by
 `src/test/java/com/example/testingrestdocs/WebLayerTest.java`) shows:
 
 ====
-[source,java]
+[source,java,indent=0,tab=2]
 ----
 this.mockMvc.perform(get("/"))
     ...
@@ -323,7 +323,7 @@ If you use Gradle, `build/asciidoc` is generated when you run `./gradlew asciido
 following listing shows the Asciidoctor-related parts of the `build.gradle` file:
 
 ====
-[source,groovy]
+[source,groovy,indent=0,tab=2]
 ----
 plugins {
 	...
