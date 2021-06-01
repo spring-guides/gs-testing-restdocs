@@ -1,9 +1,0 @@
-sudo: false
-language: java
-jdk:
-- openjdk8
-script:
-- test/run.sh
-notifications:
-  slack:
-    secure: eRU/COqVRNDxTX1H/l3LGHvLaTxR1lXy2MHmcCtzoHisYwx7QrJO2eQc2NA//qWrqgJ9mw5VgWfGjevGlJtF3QhfnL5p3/X3V9NNu9xrIeQXbSrsWuGHlD7lPDGi1hRk/Gg3I10lYl5i/XPTOcEbBCUzKynEFCa/CZMHXAVt6vho8ThUP9siNRCN26B5IdK2zzY0e5sHV9tRArzubvBlLIWz02udgrcV2jmAzHxSvkoeIbJMCrZR7AcOjXLY6sB3v78ADzM6bteYzSWiK5upbQh1k1hFUCS4+XGycREZQ1JShqRJXMXlkNPRKEl8P0o/FO9rc+66m1tmGMUEVvLCp56YG0JGQ6Eor0UEZQMF4YO5xniC5+4IavJGoOuf0JsFpqQcSbi6Qe0KtOfivltmbQhbehTdaCM7asQT0ONrz+F9YrS1osE/3EjOWF1Ef4KiIEMWtdLXPIAZlUnkP/CvQM5vqrWKpZOK4GP/5AwvdlqKhyjxlfC8QKZCYb7NpF/W74l5J3XMTOEb16q6CED8AfmPGv//6fwyTSh+Q+vCh87tK/8JxrmyUSvygVK49lZN8WipKj2ChnsSYJh3M0og+nptdJGPVvpXahXF7eUxZpwP+vh2sCAXuVty+VJBKDo2uyWMJk5/3o/os23Ec9d1H6zJzeetD9PcUieBbcjx/+4=
