@@ -320,7 +320,7 @@ asciidoctor {
 ----
 ====
 
-NOTE: The default location for Asciidoctor sources in Gradle is `src/doc/asciidoc`. We set
+NOTE: The default location for Asciidoctor sources in Gradle is `src/docs/asciidoc`. We set
 the `sourceDir` to match the default for Maven.
 
 == Summary
