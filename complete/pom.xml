@@ -27,11 +27,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- tag::test[] -->
 		<dependency>
-			<groupId>org.springframework.restdocs</groupId>
-			<artifactId>spring-restdocs-mockmvc</artifactId>
-			<scope>test</scope>
+		  <groupId>org.springframework.restdocs</groupId>
+		  <artifactId>spring-restdocs-mockmvc</artifactId>
+		  <scope>test</scope>
 		</dependency>
+		<!-- end::test[] -->
 	</dependencies>
 
 	<build>
