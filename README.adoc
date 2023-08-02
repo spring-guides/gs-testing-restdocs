@@ -251,7 +251,7 @@ field or get its name wrong, the test fails. This is the power of REST Docs.
 
 NOTE: You can create custom snippets and change the format of the snippets and customize
 values, such as the hostname. See the documentation for
-http://docs.spring.io/spring-restdocs/docs/current/reference/html5/[Spring REST Docs] for
+https://docs.spring.io/spring-restdocs/docs/current/reference/htmlsingle/[Spring REST Docs] for
 more detail.
 
 == Using the Snippets
