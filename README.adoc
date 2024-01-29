@@ -164,20 +164,7 @@ annotation on the test case. The following example (from
 ====
 [source,java,indent=0,tab=2]
 ----
-@RunWith(SpringRunner.class)
-@WebMvcTest(HomeController.class)
-public class WebLayerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Test
-    public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/"))
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Hello, World")));
-    }
-}
+include::complete/src/test/java/com/example/testingrestdocs/WebLayerTest.java[]
 ----
 ====
 
